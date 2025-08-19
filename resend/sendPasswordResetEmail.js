@@ -2,7 +2,7 @@ const {Resend} = require("resend");
 
 async function sendPasswordResetEmail(receipient, linkId){
     const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
+    const [data, error] = await resend.emails.send({
         from: "Elite Trade Capital <noreply@elitetradecapital.pro>",
         subject: "Reset Password",
         to: [receipient],
@@ -12,6 +12,10 @@ async function sendPasswordResetEmail(receipient, linkId){
             <p>Thank you for Elite Trade Capital!</p>
             `
       });
+    if(error){
+        console.log(error);
+    }
+    return data;
 }
 
 module.exports = sendPasswordResetEmail
