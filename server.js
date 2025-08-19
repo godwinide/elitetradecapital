@@ -10,28 +10,6 @@ const Site = require("./model/Site");
 
 // CONFIGS
 require("dotenv").config();
-// Simple polyfill for Headers if not available (Node < 18)
-if (!globalThis.Headers) {
-  globalThis.Headers = class Headers {
-    constructor(init = {}) {
-      this._headers = new Map();
-      if (init) {
-        if (typeof init === 'object') {
-          for (const [key, value] of Object.entries(init)) {
-            this.set(key, value);
-          }
-        }
-      }
-    }
-    set(name, value) { this._headers.set(name.toLowerCase(), String(value)); }
-    get(name) { return this._headers.get(name.toLowerCase()) || null; }
-    has(name) { return this._headers.has(name.toLowerCase()); }
-    delete(name) { this._headers.delete(name.toLowerCase()); }
-    entries() { return this._headers.entries(); }
-    keys() { return this._headers.keys(); }
-    values() { return this._headers.values(); }
-  };
-}
 require("./config/db")();
 require('./config/passport')(passport);
 // MIDDLEWARES
