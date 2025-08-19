@@ -2,7 +2,7 @@ const {Resend} = require("resend");
 
 async function sendWelcomeEmail(receipient){
     const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
+    const [data, error] = await resend.emails.send({
         from: "Elite Trade Capital <noreply@elitetradecapital.pro>",
         subject: "Welcome to Elite Trade Capital",
         to: [receipient],
@@ -20,6 +20,10 @@ async function sendWelcomeEmail(receipient){
             </div>
             `
       });
+    if(error){
+        console.log(error);
+    }
+    return data;
 }
 
 module.exports = sendWelcomeEmail;
