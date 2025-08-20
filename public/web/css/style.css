@@ -5260,3 +5260,87 @@ h4.panel-title a.collapsed:before {
 .feture-detailsr p {
   color: #fff;
 }
+
+/* -------------------------------------------------- */
+/* Mobile-only Features Section (app-specific)        */
+/* Ensures desktop features are hidden on mobile and  */
+/* the simplified mobile features are visible & styled*/
+/* -------------------------------------------------- */
+.mobile-features-section {
+  display: none;
+  padding: 40px 0;
+  background: linear-gradient(180deg, rgba(17,17,17,1) 0%, rgba(29,29,29,1) 100%);
+  position: relative;
+  z-index: 1;
+}
+.mobile-features-section .title-head {
+  text-align: center;
+}
+.mobile-features-section .title-head-subtitle p {
+  color: #bbb;
+}
+.mobile-features-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 12px;
+}
+.mobile-feature-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 16px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.mobile-feature-title p {
+  margin: 0 0 6px 0;
+  color: #ffae11;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+}
+.mobile-feature-details p {
+  margin: 0;
+  color: #eee;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+/* Hide background effects and the desktop features area on small screens */
+@media (max-width: 768px) {
+  /* Hide the desktop features section entirely */
+  section.call-action-all,
+  .call-action-all,
+  .feturesbg,
+  .fetures-left,
+  .fetures-right {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Show the mobile features section */
+  .mobile-features-section {
+    display: block !important;
+  }
+
+  /* Prevent any background image interference from ancestor sections */
+  .mobile-features-section,
+  .mobile-features-section * {
+    background-image: none !important;
+  }
+
+  /* Typography tweaks for smaller screens */
+  .mobile-features-section .title-head {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  .mobile-feature-title p {
+    font-size: 15px;
+  }
+  .mobile-feature-details p {
+    font-size: 13px;
+  }
+}
