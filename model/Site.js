@@ -17,10 +17,6 @@ const SiteSchema = new Schema({
         type: String,
         required: false
     },
-    whatsappNumber: {
-        type: String,
-        required: false
-    }
 });
 
 module.exports = Site = model("Site", SiteSchema);
